@@ -3,7 +3,7 @@
 * Merge current contributors into the README.md file
 */
 var request = require('request'),
-    _ = require('underscore'),
+    _ = require('lodash'),
     fs = require('fs');
 
 // Constants
