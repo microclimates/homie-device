@@ -1,7 +1,7 @@
 Homie Device
 ============
 
-[![NPM](https://nodei.co/npm/config.svg?downloads=true&downloadRank=true)](https://nodei.co/npm/homie-device/)&nbsp;&nbsp;
+[![NPM](https://nodei.co/npm/homie-device.svg?downloads=true&downloadRank=true)](https://nodei.co/npm/homie-device/)&nbsp;&nbsp;
 [![Build Status](https://secure.travis-ci.org/lorenwest/node-config.svg?branch=master)](https://travis-ci.org/lorenwest/homie-device)&nbsp;&nbsp;
 [release notes](https://github.com/lorenwest/homie-device/blob/master/History.md)
 
@@ -32,7 +32,7 @@ var tzNode = testDevice.registerNode('local-time', 'local-time-format');
 
 Contributors
 ------------
-<table id="contributors"><tr><td><img src=https://avatars2.githubusercontent.com/u/373538?v=4><a href="https://github.com/lorenwest">lorenwest</a></td></tr></table>
+<table id="contributors"><tr><td><img src=https://avatars2.githubusercontent.com/u/373538?v=4 style="width:124px;"><a href="https://github.com/lorenwest">lorenwest</a></td></tr></table>
 
 License
 -------
