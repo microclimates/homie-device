@@ -1,7 +1,7 @@
 var expect = require("chai").expect;
 var proxyquire = require('proxyquire');
 var mqtt = require('./mqttStub');
-var mqtt = require('mqtt'); // Uncomment to test with a live broker
+// var mqtt = require('mqtt'); // Uncomment to test with a live broker
 var HomieDevice = proxyquire('..', {mqtt: mqtt});
 
 describe("Homie Device", function() {
