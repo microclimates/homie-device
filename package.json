@@ -1,7 +1,7 @@
 {
   "name": "homie-device",
   "description": "Homie Device for NodeJS",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
     "name": "Loren West",
     "email": "open_source@lorenwest.com",
@@ -9,7 +9,11 @@
   },
   "main": "./lib/homieDevice",
   "license": "MIT",
-  "repository": {},
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/microclimates/homie-device.git"
+  },
+  "keywords": ["Homie","MQTT","IoT","RaspberryPi","Mosquitto","HiveMQ","WebSphereMQ","ActiveMQ","RabbitMQ"],
   "devDependencies": {
     "chai": "^4.1.1",
     "mocha": "^3.5.0",

@@ -12,7 +12,7 @@ It is modeled after the great work done for [ESP8266 devices](https://github.com
 Quick Start
 -----------
 
-To create and publish a device, add these lines to an index.js file and run it:
+To create and run a device, add these lines to an index.js file and run it:
 
 ```
 var HomieDevice = require('homie-device');

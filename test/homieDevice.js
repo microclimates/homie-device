@@ -1,5 +1,8 @@
-var expect    = require("chai").expect;
-var HomieDevice = require('..');
+var expect = require("chai").expect;
+var proxyquire = require('proxyquire');
+var mqtt = require('./mqttStub');
+var mqtt = require('mqtt'); // Uncomment to test with a live broker
+var HomieDevice = proxyquire('..', {mqtt: mqtt});
 
 describe("Homie Device", function() {
 
@@ -30,6 +33,24 @@ describe("Homie Device", function() {
       testDevice.setFirmware('my-firmware','0.2.1');
       expect(testDevice.firmwareName).to.equal('my-firmware');
       expect(testDevice.firmwareVersion).to.equal('0.2.1');
+    });
+
+  });
+
+  describe("MQTT Connection", function() {
+
+    var testDevice = new HomieDevice('bare-minimum');
+    it("emits the connect message on setup()", function(done) {
+      testDevice.on('connect', function() {
+        done();
+      });
+      testDevice.setup();
+    });
+    it("emits the disconnect message on end()", function(done) {
+      testDevice.on('disconnect', function() {
+        done();
+      });
+      testDevice.end();
     });
 
   });
