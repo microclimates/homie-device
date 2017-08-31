@@ -15,9 +15,9 @@ Quick Start
 To create and publish a device, add these lines to an index.js file and run it:
 
 ```
-const HomieDevice = require('homie-device');
-
-let bareMinimum = new HomieDevice('bare-minimum', '1.0.0');
+var HomieDevice = require('homie-device');
+var bareMinimum = new HomieDevice('bare-minimum');
+bareMinimum.setup();
 ```
 
 
