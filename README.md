@@ -9,6 +9,8 @@ This is a NodeJS port of the [Homie convention](https://github.com/marvinroger/h
 
 It is modeled after the great work done for [ESP8266 devices](https://github.com/marvinroger/homie-esp8266), with the goal of not only following the Homie Convention, but at adhering to the implementation interface so both message and API interfaces are familiar.
 
+It's great for mixing ESP8266 devices with Raspberry Pi and other linux or windows based systems on the same MQTT network.
+
 Features
 --------
 
