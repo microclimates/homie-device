@@ -94,7 +94,7 @@ Now publish a message to the `devices/my-device/my-node/my-property-2[8]/set` to
 Device Messages
 ---------------
 
-Incoming messages to the device emit `messasge` events. You can listen for all messages to the 'devices/my-device' topic like this:
+Incoming messages to the device emit `messasge` events. You can listen for all messages to the 'devices/my-device/#' topic like this:
 
 ```
 var HomieDevice = require('homie-device');
@@ -107,12 +107,12 @@ myDevice.on('message', function(topic, value) {
 myDevice.setup();
 ```
 
-Now publish a message to the `devices/my-device/my-node/my-property-2\[8\]/set` topic.
+Now publish a message to the `devices/my-device/my-node/my-property-2[8]/set` topic.
 
 Topic Messages
 --------------
 
-You can listen for specific incoming messages by adding a listener to the `message:{topic}` event for the device:
+You can listen for specific incoming topics by adding a listener to the `message:{topic}` event for the device:
 
 ```
 var HomieDevice = require('homie-device');
@@ -143,7 +143,7 @@ myDevice.on('broadcast', function(topic, value) {
 myDevice.setup();
 ```
 
-Now publish a broadcast message to the `devices/$broadcast/some-topic` topic.
+Now publish a broadcast message to the `devices/$broadcast/some-topic` topic. All homie devices are exposed to broadcast messages.
 
 Device Settings
 ---------------
@@ -174,7 +174,13 @@ myDevice.setup();
 Quiet Setup
 -----------
 
-If you don't want to output the startup message, pass `true` to setup `myDevice.setup(quiet = true)`.
+If you don't want the startup message, pass `true` to setup `myDevice.setup(quiet = true)`.
+
+```
+var HomieDevice = require('homie-device');
+var myDevice = new HomieDevice('bare-minimum');
+myDevice.setup(quiet = true);
+```
 
 
 Contributors
