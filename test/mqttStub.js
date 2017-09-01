@@ -21,6 +21,10 @@ MQTTClientStub.connect = function(serverUrl, opts) {
 proto.publish = function(topic, msg, opts) {
   var t = this;
   t.publishedMsgs.push({topic:topic, msg:msg, opts:opts});
+  setTimeout(function(){
+    // Auto subscribe to all published messages
+    t.emit('message', topic, msg);
+  },1);
 }
 
 proto.end = function() {
@@ -31,4 +35,8 @@ proto.end = function() {
 proto.getPublishedMsg = function(topic) {
   var t = this;
   return _.filter(t.publishedMsgs, {topic: topic});
+}
+
+proto.subscribe = function(topic) {
+  var t = this;
 }
