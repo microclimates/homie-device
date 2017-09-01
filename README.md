@@ -9,6 +9,23 @@ This is a NodeJS port of the [Homie convention](https://github.com/marvinroger/h
 
 It is modeled after the great work done for [ESP8266 devices](https://github.com/marvinroger/homie-esp8266), with the goal of not only following the Homie Convention, but at adhering to the implementation interface so both message and API interfaces are familiar.
 
+Features
+--------
+
+* Device, Node, and Property with ESP8266-like interface
+* Auto MQTT connect with optional username/password
+* Auto MQTT re-connect
+* Device config matching ESP8266 config JSON
+* Periodic $stats/uptime publishing
+* $online will
+* Device topic events
+* Broadcast message events
+* Periodic stats interval events
+* Device/node/property announcement on connect
+* Property send with retained value
+* Settable properties
+* Property ranges
+
 Quick Start
 -----------
 
@@ -185,7 +202,7 @@ myDevice.setup(true);
 
 Contributors
 ------------
-<table id="contributors"><tr><td><img width="124" src="https://avatars2.githubusercontent.com/u/373538?v=4"><br/><a href="https://github.com/lorenwest">lorenwest</a></td></tr></table>
+<table id="contributors"><tr><td><img width="124" src="https://avatars2.githubusercontent.com/u/373538?v=4"><br/><center><a href="https://github.com/lorenwest">lorenwest</a></center></td></tr></table>
 
 License
 -------
