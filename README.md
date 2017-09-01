@@ -94,7 +94,7 @@ Now publish a message to the `devices/my-device/my-node/my-property-2[8]/set` to
 Device Messages
 ---------------
 
-Incoming messages to the device emit `messasge` events. You can listen for all messages to the 'devices/my-device/#' topic like this:
+Incoming messages to the device emit `messasge` events. You can listen for all messages to the `devices/my-device/#` topic like this:
 
 ```
 var HomieDevice = require('homie-device');
@@ -174,7 +174,7 @@ myDevice.setup();
 Quiet Setup
 -----------
 
-If you don't want the startup message, pass `true` to setup `myDevice.setup(true)`.
+If you don't want the startup message, pass the quiet flag of `true` to setup `myDevice.setup(true)`.
 
 ```
 var HomieDevice = require('homie-device');
