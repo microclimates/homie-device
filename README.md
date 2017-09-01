@@ -25,6 +25,8 @@ Features
 * Property send with retained value
 * Settable properties
 * Property ranges
+* Lightweight
+* Full test coverage
 
 Quick Start
 -----------
