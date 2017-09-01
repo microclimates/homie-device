@@ -185,7 +185,7 @@ myDevice.setup(true);
 
 Contributors
 ------------
-<table id="contributors"><tr><td><img width="124" src="https://avatars2.githubusercontent.com/u/373538?v=4"><a href="https://github.com/lorenwest">lorenwest</a></td></tr></table>
+<table id="contributors"><tr><td><img width="124" src="https://avatars2.githubusercontent.com/u/373538?v=4"><br/><a href="https://github.com/lorenwest">lorenwest</a></td></tr></table>
 
 License
 -------
