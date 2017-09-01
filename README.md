@@ -2,8 +2,8 @@ Homie Device
 ============
 
 [![NPM](https://nodei.co/npm/homie-device.svg?downloads=true&downloadRank=true)](https://nodei.co/npm/homie-device/)&nbsp;&nbsp;
-[![Build Status](https://secure.travis-ci.org/lorenwest/node-config.svg?branch=master)](https://travis-ci.org/lorenwest/homie-device)&nbsp;&nbsp;
-[release notes](https://github.com/lorenwest/homie-device/blob/master/History.md)
+[![Build Status](https://secure.travis-ci.org/microclimates/homie-device.svg?branch=master)](https://travis-ci.org/microclimates/homie-device)&nbsp;&nbsp;
+[release notes](https://github.com/microclimates/homie-device/blob/master/History.md)
 
 This is a NodeJS port of the [Homie convention](https://github.com/marvinroger/homie) for devices interacting on an MQTT message bus.
 
@@ -184,8 +184,8 @@ Contributors
 License
 -------
 
-May be freely distributed under the [MIT license](https://raw.githubusercontent.com/lorenwest/homie-device/master/LICENSE).
+May be freely distributed under the [MIT license](https://raw.githubusercontent.com/microclimates/homie-device/master/LICENSE).
 
 Copyright (c) 2017 Loren West 
-[and other contributors](https://github.com/lorenwest/homie-device/graphs/contributors)
+[and other contributors](https://github.com/microclimates/homie-device/graphs/contributors)
 
