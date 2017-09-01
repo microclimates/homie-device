@@ -12,7 +12,7 @@ It is modeled after the great work done for [ESP8266 devices](https://github.com
 Quick Start
 -----------
 
-First, get a local MQTT broker running and a window opened subscribing to the 'devices/#' topic.
+First, get a local [MQTT broker](https://mosquitto.org/download/) running and a window opened subscribing to the 'devices/#' topic.
 
 Next, add these lines to an index.js file and run it:
 
