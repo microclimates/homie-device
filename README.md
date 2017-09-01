@@ -174,12 +174,12 @@ myDevice.setup();
 Quiet Setup
 -----------
 
-If you don't want the startup message, pass `true` to setup `myDevice.setup(quiet = true)`.
+If you don't want the startup message, pass `true` to setup `myDevice.setup(true)`.
 
 ```
 var HomieDevice = require('homie-device');
 var myDevice = new HomieDevice('bare-minimum');
-myDevice.setup(quiet = true);
+myDevice.setup(true);
 ```
 
 
