@@ -43,6 +43,18 @@ Congratulations, you've got a running Homie device!
 
 Take a look at the messages on your MQTT bus under devices/bare-minimum. Then ctrl-c the program and watch the broker administer the will.
 
+Setting Firmware
+----------------
+
+To publish the firmware name & version, call `myDevice.setFirmware()`:
+
+```
+var HomieDevice = require('homie-device');
+var myDevice = new HomieDevice('bare-minimum');
+myDevice.setFirmware('nodejs-test', '0.0.1');
+myDevice.setup();
+```
+
 Adding a Node
 -------------
 
@@ -202,7 +214,7 @@ myDevice.setup(true);
 
 Contributors
 ------------
-<table id="contributors"><tr><td><img width="124" src="https://avatars2.githubusercontent.com/u/373538?v=4"><br/><center><a href="https://github.com/lorenwest">lorenwest</a></center></td></tr></table>
+<table id="contributors"><tr><td><img width="124" src="https://avatars2.githubusercontent.com/u/373538?v=4"><br/><a href="https://github.com/lorenwest">lorenwest</a></td></tr></table>
 
 License
 -------
