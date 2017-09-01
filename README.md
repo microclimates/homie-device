@@ -5,7 +5,7 @@ Homie Device
 [![Build Status](https://secure.travis-ci.org/microclimates/homie-device.svg?branch=master)](https://travis-ci.org/microclimates/homie-device)&nbsp;&nbsp;
 [release notes](https://github.com/microclimates/homie-device/blob/master/History.md)
 
-This is a NodeJS port of the [Homie convention](https://github.com/marvinroger/homie) for devices interacting on an MQTT message bus.
+This is a NodeJS port of the [Homie convention](https://github.com/marvinroger/homie) for device interaction on an [MQTT](https://en.wikipedia.org/wiki/MQTT) message bus.
 
 It is modeled after the great work done for [ESP8266 devices](https://github.com/marvinroger/homie-esp8266), with the goal of not only following the Homie Convention, but at adhering to the implementation interface so both message and API interfaces are familiar.
 
