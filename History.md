@@ -1,3 +1,8 @@
+0.1.3 / 2017-09-01
+==================
+
+  * Changed event order to node connects first, device connect after
+
 0.1.2 / 2017-09-01
 ==================
 
