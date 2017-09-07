@@ -124,7 +124,7 @@ describe("Homie Property", function() {
         expect(value).to.equal('new value');
 
         // Make sure the setRange(range) publishes to the proper topic
-        testDevice.on('message:test-node-1/test-property-3[42]', function(newValue) {
+        testDevice.on('message:test-node-1/test-property-3_42', function(newValue) {
           expect(newValue).to.equal(value);
           testDevice.end();
           done();
@@ -135,7 +135,7 @@ describe("Homie Property", function() {
 
       // Simulate an out-of-band publish
       setTimeout(function() {
-        testDevice.mqttClient.publish('devices/homie-device-test/test-node-1/test-property-3[42]/set', 'new value');
+        testDevice.mqttClient.publish('devices/homie-device-test/test-node-1/test-property-3_42/set', 'new value');
       }, 200);
 
     });

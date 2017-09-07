@@ -122,7 +122,7 @@ myNode.advertiseRange('my-property-2', 0 10).settable(function(range, value) {
 myDevice.setup();
 ```
 
-Now publish a message to the `devices/my-device/my-node/my-property-2[8]/set` topic.
+Now publish a message to the `devices/my-device/my-node/my-property-2_8/set` topic.
 
 Device Messages
 ---------------
@@ -140,7 +140,7 @@ myDevice.on('message', function(topic, value) {
 myDevice.setup();
 ```
 
-Now publish a message to the `devices/my-device/my-node/my-property-2[8]/set` topic.
+Now publish a message to the `devices/my-device/my-node/my-property-2_8/set` topic.
 
 Topic Messages
 --------------
