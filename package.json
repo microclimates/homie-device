@@ -14,6 +14,9 @@
     "url": "http://github.com/microclimates/homie-device.git"
   },
   "keywords": ["Homie","MQTT","IoT","RaspberryPi","Mosquitto","HiveMQ","WebSphereMQ","ActiveMQ","RabbitMQ"],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "devDependencies": {
     "chai": "^4.1.1",
     "mocha": "^3.5.0",
