@@ -1,3 +1,8 @@
+0.3.1 / 2018-01-03
+==================
+
+  * Updating Travis node versions to keep Travis happy
+
 0.3.0 / 2018-01-03
 ==================
 
