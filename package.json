@@ -1,7 +1,7 @@
 {
   "name": "homie-device",
   "description": "Homie Device for NodeJS",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "author": {
     "name": "Loren West",
     "email": "open_source@lorenwest.com",

@@ -2,6 +2,8 @@ language: node_js
 sudo: false
 before_install:
   - npm update -g npm
+install:
+  - travis_retry npm install
 node_js:
   - "8"
   - "7"

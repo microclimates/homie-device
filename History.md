@@ -1,3 +1,8 @@
+0.3.2 / 2018-01-03
+==================
+
+  * Added travis_retry because sometimes Travis hangs
+
 0.3.1 / 2018-01-03
 ==================
 
