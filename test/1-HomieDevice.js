@@ -42,6 +42,11 @@ describe("Homie Device", function() {
   describe("MQTT Connection", function() {
 
     var testDevice = new HomieDevice('homie-device-test');
+    it("Correctly reports isConnected=false before connection", function(done) {
+      expect(testDevice.isConnected).to.equal(false);
+      done();
+    });
+
     it("emits the connect message on setup()", function(done) {
       testDevice.on('connect', function() {
         done();
@@ -49,11 +54,21 @@ describe("Homie Device", function() {
       testDevice.setup(quietSetup);
     });
 
+    it("Correctly reports isConnected=true after connection", function(done) {
+      expect(testDevice.isConnected).to.equal(true);
+      done();
+    });
+
     it("emits the disconnect message on end()", function(done) {
       testDevice.on('disconnect', function() {
         done();
       });
       testDevice.end();
+    });
+
+    it("Correctly reports isConnected=false upon disconnect", function(done) {
+      expect(testDevice.isConnected).to.equal(false);
+      done();
     });
 
   });

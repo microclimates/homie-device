@@ -1,3 +1,8 @@
+0.3.0 / 2018-01-03
+==================
+
+  * Added isConnected internal state to HomieNode
+
 0.2.1 / 2017-09-07
 ==================
 

@@ -204,6 +204,12 @@ var myDevice = new HomieDevice(config);
 myDevice.setup();
 ```
 
+Connection
+----------
+
+The Homie device maintains an `isConnected` (true/false) state, and emits 
+a `connect` and `disconnect` event as the device becomes connected with MQTT.
+
 Quiet Setup
 -----------
 
@@ -215,7 +221,6 @@ var myDevice = new HomieDevice('bare-minimum');
 myDevice.setup(true);
 ```
 
-
 Contributors
 ------------
 <table id="contributors"><tr><td><img width="124" src="https://avatars2.githubusercontent.com/u/373538?v=4"><br/><a href="https://github.com/lorenwest">lorenwest</a></td></tr></table>
@@ -225,6 +230,6 @@ License
 
 May be freely distributed under the [MIT license](https://raw.githubusercontent.com/microclimates/homie-device/master/LICENSE).
 
-Copyright (c) 2017 Loren West 
+Copyright (c) 2017-2018 Loren West 
 [and other contributors](https://github.com/microclimates/homie-device/graphs/contributors)
 
