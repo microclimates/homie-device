@@ -115,6 +115,25 @@ describe("Homie Property", function() {
 
     });
 
+    it("calls the setter when the property is set and device name isn't device id", function(done) {
+      var testDevice = new HomieDevice({name: 'Homie device test', device_id: 'homie-device-test'});
+      var testNode1 = testDevice.node('test-node-1', 'test-node');
+      var testProperty1 = testNode1.advertise('test-property-1').settable(function(range, value) {
+        expect(range.isRange).to.equal(false);
+        expect(value).to.equal('set value');
+        testProperty1.setRetained(true).send(value);
+        testDevice.end();
+        done();
+      });
+      testDevice.setup(quietSetup);
+
+      // Simulate an out-of-band publish
+      setTimeout(function() {
+        testDevice.mqttClient.publish('devices/homie-device-test/test-node-1/test-property-1/set', 'set value');
+      }, 200);
+
+    });
+
     it("calls the setter with a range property", function(done) {
       var testDevice = new HomieDevice('homie-device-test');
       var testNode1 = testDevice.node('test-node-1', 'test-node');
