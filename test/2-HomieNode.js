@@ -17,7 +17,7 @@ describe("Homie Node", function() {
       expect(testNode1).to.be.an.instanceOf(HomieNode);
     });
     it("constructor arguments are correct", function() {
-      expect(testNode1.name).to.equal('test-node-1');
+      expect(testNode1.id).to.equal('test-node-1');
       expect(testNode1.type).to.equal('test-node');
     });
 
@@ -47,6 +47,17 @@ describe("Homie Node", function() {
       testNode1 = testDevice.node('test-node-1', 'test-node');
       testDevice.on('message:test-node-1/$type', function(msg) {
         expect(msg).to.equal('test-node');
+        testDevice.end();
+        done();
+      });
+      testDevice.setup(quietSetup);
+    });
+
+    it("publishes the node list on connect", function(done) {
+      testDevice = new HomieDevice('homie-device-test');
+      testNode1 = testDevice.node('test-node-1', 'test-node');
+      testDevice.on('message:$nodes', function(msg) {
+        expect(msg).to.equal('test-node-1');
         testDevice.end();
         done();
       });
