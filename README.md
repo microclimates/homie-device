@@ -67,7 +67,7 @@ Devices aren't much use until they have some nodes and properties. Place the fol
 ```
 var HomieDevice = require('homie-device');
 var myDevice = new HomieDevice('my-device');
-var myNode = myDevice.node('my-node', 'test-node');
+var myNode = myDevice.node('my-node', 'test-node', 'test node friendly name'); //the friendly name is optional
 myNode.advertise('my-property-1');
 myNode.advertiseRange('my-property-2', 0, 10);
 myDevice.setup();
