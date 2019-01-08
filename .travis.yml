@@ -5,6 +5,7 @@ before_install:
 install:
   - travis_retry npm install
 node_js:
+  - "10"
   - "8"
   - "7"
   - "6"
