@@ -1,3 +1,9 @@
+0.4.0 / 2019-01-08
+==================
+
+  * Publish the node ID list - @jpg0
+  * Differentiate node name from node ID - @rozpuszczalny
+
 0.3.2 / 2018-01-03
 ==================
 
