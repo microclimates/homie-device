@@ -67,8 +67,8 @@ Devices aren't much use until they have some nodes and properties. Place the fol
 ```
 var HomieDevice = require('homie-device');
 var myDevice = new HomieDevice('my-device');
-var myNode = myDevice.node('my-node', 'test-node', 'test node friendly name'); //the friendly name is optional
-myNode.advertise('my-property-1');
+var myNode = myDevice.node('my-node', 'test node friendly name', 'test-node'); //the friendly name is optional
+myNode.advertise('my-property-1').setName('Friendly Prop Name').setUnit('W').setDatatype('integer');
 myNode.advertiseRange('my-property-2', 0, 10);
 myDevice.setup();
 ```
@@ -81,8 +81,8 @@ Publishing properties has the same interface as the Homie ESP8266 implementation
 ```
 var HomieDevice = require('homie-device');
 var myDevice = new HomieDevice('my-device');
-var myNode = myDevice.node('my-node', 'test-node');
-myNode.advertise('my-property-1');
+var myNode = myDevice.node('my-node', 'test node friendly name', 'test-node');
+myNode.advertise('my-property-1').setName('Friendly Prop Name').setUnit('W').setDatatype('integer');
 myDevice.setup();
 
 myNode.setProperty('my-property-1').send('property-value');
@@ -96,8 +96,8 @@ To set properties from MQTT messages, add a setter function when advertising the
 ```
 var HomieDevice = require('homie-device');
 var myDevice = new HomieDevice('my-device');
-var myNode = myDevice.node('my-node', 'test-node');
-myNode.advertise('my-property-1').settable(function(range, value) {
+var myNode = myDevice.node('my-node', 'test node friendly name', 'test-node');
+myNode.advertise('my-property-1').setName('Friendly Prop Name').setUnit('W').setDatatype('string').settable(function(range, value) {
   myNode.setProperty('my-property-1').setRetained().send(value);
 });
 myDevice.setup();
