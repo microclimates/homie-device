@@ -11,7 +11,7 @@ describe("Homie Property", function() {
   describe("Instantiation", function() {
 
     var testDevice = new HomieDevice('homie-device-test');
-    var testNode1 = testDevice.node('test-node-1', 'test-node');
+    var testNode1 = testDevice.node('test-node-1', 'friendly Name','test-node');
     var testProperty1 = testNode1.advertise('test-property-1');
     var testProperty2 = testNode1.advertise('test-property-2').settable(function(){});
 
@@ -33,13 +33,13 @@ describe("Homie Property", function() {
   describe("MQTT Connection", function() {
 
     var testDevice = new HomieDevice('homie-device-test');
-    var testNode1 = testDevice.node('test-node-1', 'test-node');
+    var testNode1 = testDevice.node('test-node-1', 'friendly Name','test-node');
     var testProperty1 = testNode1.advertise('test-property-1');
     var testProperty2 = testNode1.advertise('test-property-2').settable(function(){});
 
     it("advertises all properties on connect", function(done) {
       testDevice.on('message:test-node-1/$properties', function(msg) {
-        expect(msg).to.equal('test-property-1,test-property-2:settable,test-property-3[0-100]:settable');
+        expect(msg).to.equal('test-property-1,test-property-2');
         testDevice.end();
         done();
       });
@@ -53,7 +53,7 @@ describe("Homie Property", function() {
 
     it("publishes properties via the node like the mqtt library", function(done) {
       var testDevice = new HomieDevice('homie-device-test');
-      var testNode1 = testDevice.node('test-node-1', 'test-node');
+      var testNode1 = testDevice.node('test-node-1', 'friendly Name','test-node');
       var testProperty1 = testNode1.advertise('test-property-1');
       testNode1.on('connect', function() {
         testNode1.setProperty('test-property-1').setRetained(true).send('property1 value');
@@ -69,7 +69,7 @@ describe("Homie Property", function() {
 
     it("publishes properties directly", function(done) {
       var testDevice = new HomieDevice('homie-device-test');
-      var testNode1 = testDevice.node('test-node-1', 'test-node');
+      var testNode1 = testDevice.node('test-node-1', 'friendly Name','test-node');
       var testProperty1 = testNode1.advertise('test-property-1');
       testNode1.on('connect', function() {
         testProperty1.setRetained(true).send('property1 value');
@@ -89,7 +89,7 @@ describe("Homie Property", function() {
 
     it("calls the setter when the property is set", function(done) {
       var testDevice = new HomieDevice('homie-device-test');
-      var testNode1 = testDevice.node('test-node-1', 'test-node');
+      var testNode1 = testDevice.node('test-node-1', 'friendly Name', 'test-node');
       var testProperty1 = testNode1.advertise('test-property-1').settable(function(range, value) {
         expect(range.isRange).to.equal(false);
         expect(value).to.equal('set value');
@@ -108,7 +108,7 @@ describe("Homie Property", function() {
 
     it("calls the setter when the property is set and device name isn't device id", function(done) {
       var testDevice = new HomieDevice({name: 'Homie device test', device_id: 'homie-device-test'});
-      var testNode1 = testDevice.node('test-node-1', 'test-node');
+      var testNode1 = testDevice.node('test-node-1', 'friendly Name', 'test-node');
       var testProperty1 = testNode1.advertise('test-property-1').settable(function(range, value) {
         expect(range.isRange).to.equal(false);
         expect(value).to.equal('set value');
@@ -127,8 +127,8 @@ describe("Homie Property", function() {
 
     it("calls the setter with a range property", function(done) {
       var testDevice = new HomieDevice('homie-device-test');
-      var testNode1 = testDevice.node('test-node-1', 'test-node',0,100);
-      var testProperty1 = testNode1.advertiseRange('test-property-3').settable(function(range, value) {
+      var testNode1 = testDevice.node('test-node-1', 'friendly Name', 'test-node',0,100);
+      var testProperty1 = testNode1.advertise('test-property-3').settable(function(range, value) {
         expect(range.isRange).to.equal(true);
         expect(range.index).to.equal(42);
         expect(value).to.equal('new value');
@@ -139,7 +139,7 @@ describe("Homie Property", function() {
           testDevice.end();
           done();
         })
-        testProperty1.setRetained(false).setRange(range).send(value);
+        testProperty1.setRetained(false).setRange(range.index).send(value);
       });
       testDevice.setup(quietSetup);
 
