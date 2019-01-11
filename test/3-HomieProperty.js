@@ -14,7 +14,6 @@ describe("Homie Property", function() {
     var testNode1 = testDevice.node('test-node-1', 'test-node');
     var testProperty1 = testNode1.advertise('test-property-1');
     var testProperty2 = testNode1.advertise('test-property-2').settable(function(){});
-    var testProperty3 = testNode1.advertiseRange('test-property-3',0,100).settable(function(){});
 
     it("creates a class of type HomieProperty", function() {
       expect(testProperty1).to.be.an.instanceOf(HomieProperty);
@@ -29,13 +28,6 @@ describe("Homie Property", function() {
       expect(testProperty2.setter).to.be.a('function');
     });
 
-    it("creates a range/settable property", function() {
-      expect(testProperty3.name).to.equal('test-property-3');
-      expect(testProperty3.setter).to.be.a('function');
-      expect(testProperty3.rangeStart).to.equal(0);
-      expect(testProperty3.rangeEnd).to.equal(100);
-    });
-
   });
 
   describe("MQTT Connection", function() {
@@ -44,7 +36,6 @@ describe("Homie Property", function() {
     var testNode1 = testDevice.node('test-node-1', 'test-node');
     var testProperty1 = testNode1.advertise('test-property-1');
     var testProperty2 = testNode1.advertise('test-property-2').settable(function(){});
-    var testProperty3 = testNode1.advertiseRange('test-property-3',0,100).settable(function(){});
 
     it("advertises all properties on connect", function(done) {
       testDevice.on('message:test-node-1/$properties', function(msg) {
@@ -136,14 +127,14 @@ describe("Homie Property", function() {
 
     it("calls the setter with a range property", function(done) {
       var testDevice = new HomieDevice('homie-device-test');
-      var testNode1 = testDevice.node('test-node-1', 'test-node');
-      var testProperty1 = testNode1.advertiseRange('test-property-3',0,100).settable(function(range, value) {
+      var testNode1 = testDevice.node('test-node-1', 'test-node',0,100);
+      var testProperty1 = testNode1.advertiseRange('test-property-3').settable(function(range, value) {
         expect(range.isRange).to.equal(true);
         expect(range.index).to.equal(42);
         expect(value).to.equal('new value');
 
         // Make sure the setRange(range) publishes to the proper topic
-        testDevice.on('message:test-node-1/test-property-3_42', function(newValue) {
+        testDevice.on('message:test-node-1_42/test-property-3', function(newValue) {
           expect(newValue).to.equal(value);
           testDevice.end();
           done();
@@ -154,7 +145,7 @@ describe("Homie Property", function() {
 
       // Simulate an out-of-band publish
       setTimeout(function() {
-        testDevice.mqttClient.publish('devices/homie-device-test/test-node-1/test-property-3_42/set', 'new value');
+        testDevice.mqttClient.publish('devices/homie-device-test/test-node-1_42/test-property-3/set', 'new value');
       }, 200);
 
     });
