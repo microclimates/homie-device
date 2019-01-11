@@ -114,15 +114,15 @@ Range properties work just like the Homie ESP8266 implementation:
 ```
 var HomieDevice = require('homie-device');
 var myDevice = new HomieDevice('my-device');
-var myNode = myDevice.node('my-node', 'test-node');
-myNode.advertiseRange('my-property-2', 0 10).settable(function(range, value) {
+var myNode = myDevice.node('my-node', 'test-node', 1,10);
+myNode.advertise('my-property-2').settable(function(range, value) {
   var index = range.index;
-  myNode.setProperty('my-property-2').setRange(range).send(value);
+  myNode.setProperty('my-property-2').setRange(index).send(value);
 });
 myDevice.setup();
 ```
 
-Now publish a message to the `devices/my-device/my-node/my-property-2_8/set` topic.
+Now publish a message to the `devices/my-device/my-node_8/my-property-2/set` topic.
 
 Device Messages
 ---------------
