@@ -75,6 +75,17 @@ describe("Homie Node", function() {
       testDevice.setup(quietSetup);
     });
 
+    it("publishes the node list with array syntax on connect", function(done) {
+      testDevice = new HomieDevice('homie-device-test');
+      testNode1 = testDevice.node('test-node-1', 'friendly Name','test-node',0,1);
+      testDevice.on('message:$nodes', function(msg) {
+        expect(msg).to.equal('test-node-1[]');
+        testDevice.end();
+        done();
+      });
+      testDevice.setup(quietSetup);
+    });
+
   });
 
   describe("Stats publishing", function() {
