@@ -37,7 +37,7 @@ First, get a local [MQTT broker](https://mosquitto.org/download/) running and a 
 
 Next, add these lines to an index.js file and run it:
 
-```
+```javascript
 var HomieDevice = require('homie-device');
 var myDevice = new HomieDevice('bare-minimum');
 myDevice.setup();
@@ -52,7 +52,7 @@ Setting Firmware
 
 To publish the firmware name & version, call `myDevice.setFirmware()`:
 
-```
+```javascript
 var HomieDevice = require('homie-device');
 var myDevice = new HomieDevice('bare-minimum');
 myDevice.setFirmware('nodejs-test', '0.0.1');
@@ -64,7 +64,7 @@ Adding a Node
 
 Devices aren't much use until they have some nodes and properties. Place the following into the index.js file and run it again:
 
-```
+```javascript
 var HomieDevice = require('homie-device');
 var myDevice = new HomieDevice('my-device');
 var myNode = myDevice.node('my-node', 'test-node', 'test node friendly name'); //the friendly name is optional
@@ -78,7 +78,7 @@ Publishing a Property
 
 Publishing properties has the same interface as the Homie ESP8266 implementation:
 
-```
+```javascript
 var HomieDevice = require('homie-device');
 var myDevice = new HomieDevice('my-device');
 var myNode = myDevice.node('my-node', 'test-node');
@@ -93,7 +93,7 @@ Settable Properties
 
 To set properties from MQTT messages, add a setter function when advertising the property:
 
-```
+```javascript
 var HomieDevice = require('homie-device');
 var myDevice = new HomieDevice('my-device');
 var myNode = myDevice.node('my-node', 'test-node');
@@ -111,7 +111,7 @@ Range Properties
 
 Range properties work just like the Homie ESP8266 implementation:
 
-```
+```javascript
 var HomieDevice = require('homie-device');
 var myDevice = new HomieDevice('my-device');
 var myNode = myDevice.node('my-node', 'test-node');
@@ -129,7 +129,7 @@ Device Messages
 
 Incoming messages to the device emit `messasge` events. You can listen for all messages to the `devices/my-device/#` topic like this:
 
-```
+```javascript
 var HomieDevice = require('homie-device');
 var myDevice = new HomieDevice('my-device');
 
@@ -147,7 +147,7 @@ Topic Messages
 
 You can listen for specific incoming topics by adding a listener to the `message:{topic}` event for the device:
 
-```
+```javascript
 var HomieDevice = require('homie-device');
 var myDevice = new HomieDevice('my-device');
 
@@ -165,7 +165,7 @@ Broadcast Messages
 
 You can listen to all `devices/$broadcast/#` messages by adding a listener to the `broadcast` event:
 
-```
+```javascript
 var HomieDevice = require('homie-device');
 var myDevice = new HomieDevice('my-device');
 
@@ -183,7 +183,7 @@ Device Settings
 
 To configure your device with external settings, pass a full or partial config object to the HomieDevice constructor. If you've worked with the Homie ESP8266 implementation, this will be familiar:
 
-```
+```javascript
 var HomieDevice = require('homie-device');
 var config = {
   "name": "Bare Minimum",
@@ -215,7 +215,7 @@ Quiet Setup
 
 If you don't want the startup message, pass the quiet flag of `true` to setup `myDevice.setup(true)`.
 
-```
+```javascript
 var HomieDevice = require('homie-device');
 var myDevice = new HomieDevice('bare-minimum');
 myDevice.setup(true);
