@@ -1,5 +1,6 @@
 var expect = require("chai").expect;
 var proxyquire = require('proxyquire').noPreserveCache();
+var pkgJson = require('../package.json');
 var quietSetup = true;
 var mqtt = require('./mqttStub');
 // var mqtt = require('mqtt'); // Uncomment to test with a live broker
@@ -71,6 +72,89 @@ describe("Homie Device", function() {
       done();
     });
 
+  });
+
+  describe("Attribute Reporting", function() {
+    var testDevice;
+
+    var attributes = [
+      {
+        name: '$state',
+        expected: 'init'
+      },
+      {
+        name: '$homie',
+        expected: '3.0.1'
+      },
+      {
+        name: '$implementation',
+        expected: 'nodejs:' + pkgJson.name
+      },
+      {
+        name: '$implementation/version',
+        expected: pkgJson.version
+      },
+      {
+        name: '$fw/name',
+        expected: 'foo',
+        firmware: {
+          name: 'foo',
+          version: '1.0'
+        }
+      },
+      {
+        name: '$fw/version',
+        expected: '1.0',
+        firmware: {
+          name: 'foo',
+          version: '1.0'
+        }
+      },
+      {
+        name: '$name',
+        expected: 'bar',
+        config: { name: 'bar' }
+      },
+      {
+        name: '$stats',
+        expected: 'interval,uptime'
+      },
+      {
+        name: '$stats/interval',
+        expected: '60'
+      },
+      {
+        name: '$mac',
+        expected: '00-11-22-33-44-55',
+        config: { mac: '00-11-22-33-44-55' }
+      },
+      {
+        name: '$localip',
+        expected: '127.0.0.1',
+        config: { ip: '127.0.0.1' }
+      },
+    ];
+
+    attributes.forEach(function(attribute) {
+      it("reports " + attribute.name + " attribute on connect",  function(done) {
+        testDevice = new HomieDevice(attribute.config || {});
+
+        if (attribute.firmware) {
+          testDevice.setFirmware(
+            attribute.firmware.name,
+            attribute.firmware.version
+          );
+        }
+
+        testDevice.once('message:' + attribute.name, function(msg) {
+          expect(msg).to.equal(attribute.expected);
+          testDevice.end();
+        });
+
+        testDevice.once('disconnect', done);
+        testDevice.setup(quietSetup);
+      });
+    });
   });
 
   describe("Publish / Subscribe", function() {

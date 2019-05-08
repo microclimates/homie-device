@@ -67,9 +67,8 @@ Devices aren't much use until they have some nodes and properties. Place the fol
 ```javascript
 var HomieDevice = require('homie-device');
 var myDevice = new HomieDevice('my-device');
-var myNode = myDevice.node('my-node', 'test-node', 'test node friendly name'); //the friendly name is optional
-myNode.advertise('my-property-1');
-myNode.advertiseRange('my-property-2', 0, 10);
+var myNode = myDevice.node('my-node', 'test node friendly name', 'test-node');
+myNode.advertise('my-property-1').setName('Friendly Prop Name').setUnit('W').setDatatype('integer');
 myDevice.setup();
 ```
 
@@ -81,8 +80,8 @@ Publishing properties has the same interface as the Homie ESP8266 implementation
 ```javascript
 var HomieDevice = require('homie-device');
 var myDevice = new HomieDevice('my-device');
-var myNode = myDevice.node('my-node', 'test-node');
-myNode.advertise('my-property-1');
+var myNode = myDevice.node('my-node', 'test node friendly name', 'test-node');
+myNode.advertise('my-property-1').setName('Friendly Prop Name').setUnit('W').setDatatype('integer');
 myDevice.setup();
 
 myNode.setProperty('my-property-1').send('property-value');
@@ -96,8 +95,8 @@ To set properties from MQTT messages, add a setter function when advertising the
 ```javascript
 var HomieDevice = require('homie-device');
 var myDevice = new HomieDevice('my-device');
-var myNode = myDevice.node('my-node', 'test-node');
-myNode.advertise('my-property-1').settable(function(range, value) {
+var myNode = myDevice.node('my-node', 'test node friendly name', 'test-node');
+myNode.advertise('my-property-1').setName('Friendly Prop Name').setUnit('W').setDatatype('string').settable(function(range, value) {
   myNode.setProperty('my-property-1').setRetained().send(value);
 });
 myDevice.setup();
@@ -105,29 +104,52 @@ myDevice.setup();
 
 Once running, publish a message to the `devices/my-device/my-node/my-property-1/set` topic.
 
-
-Range Properties
+Array Nodes
 ----------------
 
-Range properties work just like the Homie ESP8266 implementation:
+Array nodes are also supported by passing lower and upper bounds on the range when creating the node.
+
+```
+var HomieDevice = require('homie-device');
+var myDevice = new HomieDevice('my-device');
+
+var lowerBound = 0;
+var upperBound = 10;
+var myNode = myDevice.node('my-node', 'test node friendly name', 'test-node', lowerBound, upperBound);
+```
+
+Publishing a property to a specific node index can be done like this:
 
 ```javascript
 var HomieDevice = require('homie-device');
 var myDevice = new HomieDevice('my-device');
-var myNode = myDevice.node('my-node', 'test-node');
-myNode.advertiseRange('my-property-2', 0 10).settable(function(range, value) {
+var myNode = myDevice.node('my-node', 'test node friendly name', 'test-node', 0, 10);
+myNode.advertise('my-property-1');
+myDevice.setup();
+
+// Publishes 'property-value' to the 'devices/my-device/my-node_2/my-property-1' topic.
+myNode.setProperty('my-property-1').setRange(2).send('property-value');
+```
+
+Setting a property on a specific node index can be done like this:
+
+```
+var HomieDevice = require('homie-device');
+var myDevice = new HomieDevice('my-device');
+var myNode = myDevice.node('my-node', 'test node friendly name', 'test-node', 0, 10);
+myNode.advertise('my-property-2').settable(function(range, value) {
   var index = range.index;
-  myNode.setProperty('my-property-2').setRange(range).send(value);
+  myNode.setProperty('my-property-2').setRange(index).send(value);
 });
 myDevice.setup();
 ```
 
-Now publish a message to the `devices/my-device/my-node/my-property-2_8/set` topic.
+Now publish a message to the `devices/my-device/my-node_8/my-property-2/set` topic.
 
 Device Messages
 ---------------
 
-Incoming messages to the device emit `messasge` events. You can listen for all messages to the `devices/my-device/#` topic like this:
+Incoming messages to the device emit `message` events. You can listen for all messages to the `devices/my-device/#` topic like this:
 
 ```javascript
 var HomieDevice = require('homie-device');
