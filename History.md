@@ -1,3 +1,13 @@
+3.0.1 / 2019-05-08
+==================
+
+  * publish stats interval at each interval - @carterzenk
+  * remove optional comments from setters that are not optional - @carterzenk
+  * Updated readme to show examples of working with array nodes - @carterzenk
+  * Added additional test coverage for 3.0.1 features - @carterzenk
+  * Published to NPM as 3.0.1 - @lorenwest
+
+
 0.4.0 / 2019-01-08
 ==================
 

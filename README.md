@@ -245,7 +245,8 @@ myDevice.setup(true);
 
 Contributors
 ------------
-<table id="contributors"><tr><td><img width="124" src="https://avatars2.githubusercontent.com/u/373538?v=4"><br/><a href="https://github.com/lorenwest">lorenwest</a></td></tr></table>
+<table id="contributors"><tr>
+<td><img width="124" src="https://avatars2.githubusercontent.com/u/373538?v=4"><br/><a href="https://github.com/lorenwest">lorenwest</a></td><td><img width="124" src="https://avatars0.githubusercontent.com/u/7427179?v=4"><br/><a href="https://github.com/marcus-garvey">marcus-garvey</a></td><td><img width="124" src="https://avatars0.githubusercontent.com/u/7627635?v=4"><br/><a href="https://github.com/rozpuszczalny">rozpuszczalny</a></td><td><img width="124" src="https://avatars1.githubusercontent.com/u/5964259?s=460&v=4"><br/><a href="https://github.com/carterzenk">carterzenk</a></td></tr></table>
 
 License
 -------
